@@ -1,0 +1,9 @@
+app:
+  build: .
+  command: gin run
+  volumes:
+    - ./:/go/src/sampleapi
+  working_dir: /go/src/sampleapi
+  ports:
+    - 8080:8080
+    - 3000:3000
