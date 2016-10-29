@@ -1,5 +1,5 @@
 #Sample app with Docker Container#
- - docker with gin for live reloading
+ - gin for live reloading
  - glide for vendor packages
 
 #Usage#
