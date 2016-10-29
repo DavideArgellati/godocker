@@ -2,9 +2,9 @@ version: '2' #https://docs.docker.com/compose/compose-file/#/version-2
 services:
   app:
     build:
-      context: ${LOCAL_APP_DIR}
-      dockerfile: ${DOCKERFILE}
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - ${LOCAL_APP_DIR}:/go/src/app #for sync of files so gin rebuilds
+      - .:/go/src/app #for sync of files so gin rebuilds
     ports:
-      - ${LOCAL_PORT}:${CONTAINER_PORT}
+      - 3000:3000
