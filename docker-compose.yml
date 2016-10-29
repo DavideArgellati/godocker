@@ -1,9 +1,10 @@
-app:
-  build: .
-  command: gin run
-  volumes:
-    - ./:/go/src/sampleapi
-  working_dir: /go/src/sampleapi
-  ports:
-    - 8080:8080
-    - 3000:3000
+version: '2' #https://docs.docker.com/compose/compose-file/#/version-2
+services:
+  app:
+    build:
+      context: ${LOCAL_APP_DIR}
+      dockerfile: ${DOCKERFILE}
+    volumes:
+      - ${LOCAL_APP_DIR}:/go/src/app #for sync of files so gin rebuilds
+    ports:
+      - ${LOCAL_PORT}:${CONTAINER_PORT}
