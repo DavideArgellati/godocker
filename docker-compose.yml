@@ -4,9 +4,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        APP_FOLDER: ./app
     volumes:
-      - .:/go/src/app #for sync of files so gin rebuilds
+      - ./app:/go/src/app #for sync of files so gin rebuilds
     ports:
       - 3000:3000
     environment:
-     - PORT=3001 #gin forwards to 3001 app listen to it
+      - PORT=3001 #gin forwards to 3001 app listen to it

@@ -1,8 +1,10 @@
 FROM golang:latest
+ARG APP_FOLDER
 
 #app folder inside the container
-COPY . /go/src/app
+COPY ${APP_FOLDER} /go/src/app
 WORKDIR /go/src/app
+
 
 #glide for vendor packages
 RUN curl https://glide.sh/get | sh
@@ -14,6 +16,8 @@ RUN go-wrapper download
 RUN go-wrapper install
 
 #with gin for live reload
+RUN cd ..
 RUN go get github.com/codegangsta/gin
+RUN cd ${WORKDIR}
 CMD gin run
 #ENTRYPOINT /go/bin/app
