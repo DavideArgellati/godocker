@@ -7,5 +7,5 @@
 
 #How it works:#
  - gin act as a proxy on port 3000 and forward to 3001 which the app listen to
- - if you don't want live reload just set 80 or whatever in docker-compose and Dockerfile
+ - if you don't want live reload just set 80 or whatever in docker-compose
  - we share the app folder as volume so files are in sync inside the container at /go/src

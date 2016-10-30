@@ -16,10 +16,4 @@ RUN go-wrapper install
 #with gin for live reload
 RUN go get github.com/codegangsta/gin
 CMD gin run
-ENV PORT 3001 #app will listen on this
-EXPOSE 3000
-
-#without gin
-#ENV PORT 80
-#EXPOSE 80
 #ENTRYPOINT /go/bin/app

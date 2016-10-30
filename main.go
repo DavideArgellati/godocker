@@ -8,7 +8,7 @@ import(
 )
  
 func indexHandler( w http.ResponseWriter, r *http.Request){
-	fmt.Fprintf(w, "hello world 2, I'm running on %s with an %s CPU ", runtime.GOOS,runtime.GOARCH)
+	fmt.Fprintf(w, "hello world 1, I'm running on %s with an %s CPU ", runtime.GOOS,runtime.GOARCH)
 
 }
  
