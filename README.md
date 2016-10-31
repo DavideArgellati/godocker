@@ -1,11 +1,11 @@
 #Sample app with Docker Container#
- - gin for live reloading
+ - fresh for live reloading
  - glide for vendor packages
 
 #Usage#
 - docker-compose up ( add -d for background exec)
 
 #How it works:#
- - gin act as a proxy on port 3000 and forward to 3001 which the app listen to
- - if you don't want live reload just set 80 or whatever in docker-compose
  - we share the app folder as volume so files are in sync inside the container at /go/src
+ - fresh watch over file changes events to rebuild the app, docker might have some issues with that on windows and older docker versions make sure to use the latest
+ - a gin branch is available "withgin" if you prefer that solution
