@@ -7,7 +7,7 @@ services:
       args:
         APP_FOLDER: ./app
     volumes:
-      - ./app:/go/src/app #for sync of files so gin rebuilds
+      - ./app:/go/src/app #for sync of files so fresh rebuilds
     ports:
       - 8080:8080
     environment:

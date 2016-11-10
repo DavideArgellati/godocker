@@ -14,7 +14,7 @@ RUN glide install
 RUN go-wrapper download
 RUN go-wrapper install
 
-#with gin for live reload
+#with fresh for live reload
 RUN go get github.com/pilu/fresh
 CMD fresh
 #ENTRYPOINT /go/bin/app
