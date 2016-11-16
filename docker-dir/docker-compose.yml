@@ -1,0 +1,45 @@
+version: '2' #https://docs.docker.com/compose/compose-file/#/version-2
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+      args:
+        APP_FOLDER: ./app #relative to context
+    volumes:
+      - ../app:/go/src/app #relative to this file, volume to sync of files so fresh rebuilds
+    ports:
+      - 8080:8080
+    environment:
+      - PORT=8080 #can be used for the go app os.GetEnv("PORT")
+  redis:
+    image: redis
+    volumes:
+     - ./redis/data:/data
+    ports:
+      - "6379:6379"
+  mysql:
+    image: percona
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mysql/logs:/var/log/mysql
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      ENV: dev
+  nginx_dashboard:
+    build:
+      context: ../
+      dockerfile: ./nginx_frontend/Dockerfile
+    ports:
+      - "8081:80"
+    environment:
+      ENV: dev
+    volumes:
+      - ../frontend:/var/www #syncs nginx docroot for dashboard.conf
+    links:
+      - goapp
+      - mysql
+      - redis
