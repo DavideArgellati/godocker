@@ -1,2 +1,6 @@
 gin-bin
 .idea
+app/tmp
+docker-dir/mysql/data/*
+docker-dir/redis/data/*
+docker-dir/mysql/logs/*
