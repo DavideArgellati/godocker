@@ -2,12 +2,12 @@ version: '2' #https://docs.docker.com/compose/compose-file/#/version-2
 services:
   app:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ../
+      dockerfile: ../godocker/Dockerfile
       args:
-        APP_FOLDER: ./app
+        APP_FOLDER: ../godocker/sample-app
     volumes:
-      - ./app:/go/src/app #for sync of files so fresh rebuilds
+      - ../godocker/sample-app:/go/src/app #for sync of files so fresh rebuilds
     ports:
       - 8080:8080
     environment:
